@@ -1,0 +1,21 @@
+services:
+  notification:
+    build: .
+    container_name: Notification
+    volumes:
+      - .:/code/
+    ports:
+      - 8002:8002
+    restart: always
+
+  celery:
+    container_name: notification_celery
+    command: celery -A config.celery worker -l INFO
+    depends_on:
+      - notification
+    build: .
+    volumes:
+      - .:/code/
+    environment:
+      - C_FORCE_ROOT=true
+    restart: always
