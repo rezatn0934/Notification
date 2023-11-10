@@ -12,10 +12,12 @@ class Settings(BaseSettings):
     CELERY_RESULT_BACKEND: str
 
     EMAIL_HOST: str
-    EMAIL_USE_TLS: bool
     EMAIL_PORT: int
     EMAIL_HOST_USER: str
     EMAIL_HOST_PASSWORD: str
+
+    ELASTICSEARCH_HOST: str
+    ELASTICSEARCH_PORT: int
 
     class Config:
         env_file = ".env"
